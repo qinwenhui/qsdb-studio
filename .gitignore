@@ -1,0 +1,74 @@
+# ---------------------------------------------------------------------------
+# OS / editors / local AI tooling
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.suo
+*.swp
+*.swo
+.claude/
+.cursor/
+.windsurf/
+.aider*
+
+# ---------------------------------------------------------------------------
+# Secrets / local environment
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+secrets/
+credentials/
+
+# ---------------------------------------------------------------------------
+# Local scratch data / generated test state
+# ---------------------------------------------------------------------------
+*.part
+*.local
+tmp/
+scratch/
+.local/
+.internal/
+tools/internal/
+
+# ---------------------------------------------------------------------------
+# The official website is maintained in its own repository/project.
+# ---------------------------------------------------------------------------
+website/
+
+# ---------------------------------------------------------------------------
+# Internal development documents (not part of the public distribution)
+# ---------------------------------------------------------------------------
+docs/设计开发文档.md
+docs/交互优化清单.md
+docs/screenshots/
+
+# ---------------------------------------------------------------------------
+# Build outputs
+# ---------------------------------------------------------------------------
+# Rust
+/target
+**/*.rs.bk
+
+# Node / Vite
+node_modules/
+ui/dist/
+ui/.vite/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Tauri
+src-tauri/gen/
+src-tauri/target/
+
+# Local run artifacts
+*.log

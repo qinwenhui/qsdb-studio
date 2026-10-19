@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security report
+    url: mailto:1510365643@qq.com
+    about: Report vulnerabilities privately. Do not open a public issue.
+  - name: QSDB database issues
+    url: https://github.com/qinwenhui/qsdb/issues
+    about: Bugs in the database engine or HTTP API belong in the QSDB repository.

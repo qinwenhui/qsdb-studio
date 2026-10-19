@@ -1,0 +1,45 @@
+{
+  "name": "qsdb-studio-ui",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "author": "qinwh <1510365643@qq.com>",
+  "license": "SEE LICENSE IN ../LICENSE",
+  "homepage": "https://github.com/qinwenhui/qsdb-studio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qinwenhui/qsdb-studio.git"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@tanstack/vue-virtual": "^3.13.47",
+    "@tauri-apps/api": "^2.12.4",
+    "@tauri-apps/plugin-dialog": "^2.8.3",
+    "@tauri-apps/plugin-opener": "^2.7.2",
+    "monaco-editor": "^0.57.0",
+    "naive-ui": "^2.45.3",
+    "sql-formatter": "^15.9.0",
+    "vue": "^3.5.44"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "eslint": "^9.39.5",
+    "eslint-plugin-vue": "^10.11.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.71.2",
+    "vite": "^7.3.7",
+    "vitest": "^5.0.5",
+    "vue-eslint-parser": "^10.4.1",
+    "vue-tsc": "^3.3.13"
+  }
+}

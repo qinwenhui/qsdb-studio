@@ -1,0 +1,26 @@
+[package]
+name = "qsdb-studio"
+description = "QSDB 官方桌面客户端"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+default-run = "qsdb-studio"
+
+[lib]
+name = "qsdb_studio_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+# 文件选择（CSV 导入/导出）。写文件在 Rust 命令里做，不开放 fs scope。
+tauri-plugin-dialog = "2"
+# 关于页外链（仅 http/https，默认权限集已限定）。
+tauri-plugin-opener = "2"
+qsdb-studio-core = { path = "../crates/qsdb-studio-core" }
+serde.workspace = true
+serde_json.workspace = true
