@@ -1,0 +1,18 @@
+# Normalize text files to LF; keep binary assets untouched.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.icns binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.exe binary
+*.msi binary
+
+package-lock.json -diff linguist-generated
+Cargo.lock -diff linguist-generated

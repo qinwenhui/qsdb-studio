@@ -1,0 +1,455 @@
+/* =========================================================================
+   QSDB Studio — 外观系统
+   玻璃拟态 + 可换壁纸 + 强调色；所有自定义面板只消费变量。
+   ========================================================================= */
+
+:root {
+  --panel-rgb: 255, 255, 255;
+  --panel-alpha: 0.72;
+  --panel-strong-alpha: 0.9;
+  --panel: rgba(var(--panel-rgb), var(--panel-alpha));
+  --panel-strong: rgba(var(--panel-rgb), var(--panel-strong-alpha));
+  --surface-soft: rgba(255, 255, 255, 0.42);
+  --surface-raised: rgba(255, 255, 255, 0.62);
+  --surface-stripe: rgba(255, 255, 255, 0.28);
+  --panel-soft: var(--surface-soft);
+  --panel-raised: var(--surface-raised);
+  --hover: rgba(var(--accent-rgb, 59, 110, 245), 0.07);
+  --border: rgba(20, 30, 50, 0.1);
+  --border-strong: rgba(20, 30, 50, 0.17);
+  --border-subtle: rgba(20, 30, 50, 0.06);
+  --row-line: rgba(20, 30, 50, 0.055);
+  --text: #17202e;
+  --text-soft: #4a5668;
+  --muted: #7c8798;
+  --accent: #3b6ef5;
+  --accent-hover: #5b86ff;
+  --accent-pressed: #2f5bd6;
+  --accent-strong: #2a56cc;
+  --accent-soft: rgba(59, 110, 245, 0.12);
+  --accent-rgb: 59, 110, 245;
+  --accent-border: rgba(59, 110, 245, 0.3);
+  --ok: #18794e;
+  --ok-soft: rgba(24, 121, 78, 0.1);
+  --ok-border: rgba(24, 121, 78, 0.22);
+  --warn: #9a5b00;
+  --warn-soft: rgba(245, 158, 11, 0.13);
+  --warn-border: rgba(217, 119, 6, 0.26);
+  --danger: #b42318;
+  --danger-soft: rgba(180, 35, 24, 0.08);
+  --danger-border: rgba(180, 35, 24, 0.2);
+  --danger-text: #7a271a;
+  --shadow: 0 26px 80px rgba(15, 23, 42, 0.2);
+  --shadow-soft: 0 10px 32px rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 18px 50px rgba(15, 23, 42, 0.12);
+  --glass-blur: 18px;
+  --grid-bg: rgba(255, 255, 255, 0.3);
+  --grid-header: rgba(255, 255, 255, 0.44);
+  --grid-stripe: rgba(120, 140, 170, 0.045);
+  --grid-hover: rgba(var(--accent-rgb), 0.065);
+  --code-bg: #101828;
+  --code-text: #e6edf7;
+  --wallpaper-auto:
+    radial-gradient(1200px 800px at 12% 8%, #dbe7ff 0%, transparent 60%),
+    radial-gradient(900px 600px at 90% 10%, #f2e1ff 0%, transparent 55%),
+    radial-gradient(1000px 700px at 50% 100%, #ffe9dc 0%, transparent 60%),
+    linear-gradient(135deg, #f6f8ff 0%, #eef2fb 50%, #f7f5ff 100%);
+  --wallpaper-veil:
+    radial-gradient(120% 80% at 50% 0%, rgba(255, 255, 255, 0.32), transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.02));
+  --mono: 'JetBrains Mono', 'Cascadia Code', 'SFMono-Regular', Consolas, 'Liberation Mono',
+    monospace;
+  --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'Microsoft YaHei',
+    'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+  color-scheme: light;
+}
+
+html[data-theme='dark'] {
+  --panel-rgb: 23, 27, 36;
+  --panel-alpha: 0.7;
+  --panel-strong-alpha: 0.9;
+  --surface-soft: rgba(36, 42, 56, 0.42);
+  --surface-raised: rgba(40, 46, 62, 0.62);
+  --surface-stripe: rgba(255, 255, 255, 0.02);
+  --hover: rgba(var(--accent-rgb), 0.1);
+  --border: rgba(255, 255, 255, 0.085);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --row-line: rgba(255, 255, 255, 0.06);
+  --text: #e9edf5;
+  --text-soft: #bcc5d4;
+  --muted: #8d98aa;
+  --ok: #5fd39a;
+  --ok-soft: rgba(95, 211, 154, 0.12);
+  --ok-border: rgba(95, 211, 154, 0.24);
+  --warn: #ffc66d;
+  --warn-soft: rgba(255, 198, 109, 0.1);
+  --warn-border: rgba(255, 198, 109, 0.24);
+  --danger: #ff8a80;
+  --danger-soft: rgba(255, 138, 128, 0.1);
+  --danger-border: rgba(255, 138, 128, 0.24);
+  --danger-text: #ffc9c4;
+  --shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+  --shadow-soft: 0 12px 36px rgba(0, 0, 0, 0.34);
+  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --grid-bg: rgba(18, 22, 30, 0.28);
+  --grid-header: rgba(32, 38, 50, 0.5);
+  --grid-stripe: rgba(255, 255, 255, 0.018);
+  --grid-hover: rgba(var(--accent-rgb), 0.09);
+  --code-bg: #0c111a;
+  --code-text: #dfe7f5;
+  --wallpaper-auto:
+    radial-gradient(1100px 700px at 15% 10%, #1b2a49 0%, transparent 60%),
+    radial-gradient(900px 700px at 85% 15%, #38224f 0%, transparent 55%),
+    radial-gradient(1000px 800px at 50% 100%, #0d2931 0%, transparent 60%),
+    linear-gradient(150deg, #0a0d13 0%, #10141d 55%, #0d1016 100%);
+  --wallpaper-veil:
+    radial-gradient(120% 80% at 50% 0%, rgba(0, 0, 0, 0.08), transparent 62%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.3));
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg, #eef1f7);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ------------------------------------------------------------------ 壁纸 */
+
+.wallpaper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: #eef1f7;
+  background-image: var(--wallpaper-auto);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-color 0.4s ease;
+}
+
+html[data-theme='dark'] .wallpaper {
+  background-color: #0b0e14;
+}
+
+.wallpaper-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--wallpaper-veil);
+}
+
+.wp-auto {
+  background-image: var(--wallpaper-auto);
+}
+
+.wp-dawn {
+  background-image:
+    radial-gradient(900px 620px at 8% 18%, #ffd9c7 0%, transparent 62%),
+    radial-gradient(820px 600px at 82% 8%, #d9e4ff 0%, transparent 58%),
+    radial-gradient(1000px 780px at 62% 100%, #e8d9ff 0%, transparent 62%),
+    linear-gradient(160deg, #fdf6f0 0%, #eef3ff 60%, #f8f1ff 100%);
+}
+
+.wp-dusk {
+  background-image:
+    radial-gradient(900px 620px at 14% 16%, #27345c 0%, transparent 62%),
+    radial-gradient(820px 600px at 86% 18%, #4a2a5e 0%, transparent 58%),
+    radial-gradient(1000px 780px at 50% 100%, #12313b 0%, transparent 62%),
+    linear-gradient(160deg, #0a0d14 0%, #141827 60%, #1a1022 100%);
+}
+
+.wp-paper {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(120, 96, 70, 0.035) 0 1px, transparent 1px 28px),
+    radial-gradient(900px 600px at 12% 10%, rgba(255, 255, 255, 0.7), transparent 60%),
+    linear-gradient(160deg, #f7f1e7 0%, #efe7da 58%, #f3ece1 100%);
+}
+
+.wp-aurora {
+  background-image:
+    radial-gradient(52% 58% at 22% 28%, rgba(74, 222, 255, 0.32), transparent 68%),
+    radial-gradient(46% 56% at 78% 24%, rgba(167, 139, 250, 0.34), transparent 66%),
+    radial-gradient(60% 64% at 56% 92%, rgba(45, 212, 191, 0.22), transparent 68%),
+    linear-gradient(150deg, #070b12 0%, #0c1220 55%, #0a1018 100%);
+  background-size:
+    170% 170%,
+    160% 160%,
+    180% 180%,
+    cover;
+  background-position:
+    0% 0%,
+    100% 10%,
+    40% 100%,
+    center;
+  animation: aurora-drift 32s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-drift {
+  0% {
+    background-position:
+      0% 0%,
+      100% 10%,
+      40% 100%,
+      center;
+  }
+  100% {
+    background-position:
+      38% 42%,
+      58% 48%,
+      72% 64%,
+      center;
+  }
+}
+
+.wp-image {
+  background-image: var(--wallpaper-auto);
+  background-size: cover;
+  background-position: center;
+}
+
+/* ------------------------------------------------------------------ 玻璃 */
+
+.glass {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
+}
+
+/* Naive UI 的抽屉/弹窗/浮层也套玻璃，避免和外层壁纸割裂。 */
+.n-drawer-content {
+  background: var(--panel-strong) !important;
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 6px)) saturate(1.35);
+  backdrop-filter: blur(calc(var(--glass-blur) + 6px)) saturate(1.35);
+}
+
+.n-drawer-header,
+.n-drawer-footer {
+  background: transparent !important;
+}
+
+.n-modal-container .n-card,
+.n-modal .n-card {
+  background: var(--panel-strong) !important;
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 6px)) saturate(1.35);
+  backdrop-filter: blur(calc(var(--glass-blur) + 6px)) saturate(1.35);
+  border-radius: 18px !important;
+}
+
+.n-drawer-mask,
+.n-modal-mask {
+  background: rgba(8, 11, 17, 0.34) !important;
+  backdrop-filter: blur(4px);
+}
+
+.n-dropdown-menu,
+.n-base-select-menu {
+  background: var(--panel-strong) !important;
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 4px)) saturate(1.3);
+  backdrop-filter: blur(calc(var(--glass-blur) + 4px)) saturate(1.3);
+}
+
+.n-tooltip {
+  border-radius: 8px !important;
+}
+
+/* 元数据树表行拖到查询窗口时跟随鼠标的 ghost（pointer 拖拽，不用 HTML5 DnD）。 */
+.table-drag-ghost {
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+  max-width: 340px;
+  padding: 6px 10px;
+  border-radius: 9px;
+  border: 1px solid var(--accent-border);
+  background: var(--panel-strong);
+  color: var(--text);
+  box-shadow: var(--shadow-card);
+  font-family: var(--mono);
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Monaco 右键菜单渲染在 shadow DOM（.shadow-root-host）里，照不到
+   .monaco-editor 上的主题变量。把菜单需要的 VS Code CSS 变量放在根节点，
+   阴影树才能继承到背景/文字/圆角/阴影。 */
+:root {
+  --vscode-menu-background: #ffffff;
+  --vscode-menu-foreground: #2a3444;
+  --vscode-menu-border: #dbe3ef;
+  --vscode-menu-separatorBackground: #e8edf5;
+  --vscode-menu-selectionBorder: #3b6ef5;
+  --vscode-list-hoverBackground: #eef3ff;
+  --vscode-list-hoverForeground: #17202e;
+  --vscode-list-activeSelectionBackground: #eef3ff;
+  --vscode-list-activeSelectionForeground: #17202e;
+  --vscode-widget-shadow: rgba(15, 23, 42, 0.18);
+  --vscode-scrollbar-shadow: rgba(0, 0, 0, 0.1);
+  --vscode-scrollbarSlider-background: rgba(120, 135, 155, 0.35);
+  --vscode-scrollbarSlider-hoverBackground: rgba(110, 125, 148, 0.55);
+  --vscode-scrollbarSlider-activeBackground: rgba(90, 105, 128, 0.65);
+  --vscode-cornerRadius-large: 11px;
+  --vscode-strokeThickness: 1px;
+}
+
+html[data-theme='dark'] {
+  --vscode-menu-background: #1b2230;
+  --vscode-menu-foreground: #dbe3ef;
+  --vscode-menu-border: rgba(255, 255, 255, 0.14);
+  --vscode-menu-separatorBackground: rgba(255, 255, 255, 0.12);
+  --vscode-menu-selectionBorder: #7ea2ff;
+  --vscode-list-hoverBackground: rgba(126, 162, 255, 0.18);
+  --vscode-list-hoverForeground: #f3f7ff;
+  --vscode-list-activeSelectionBackground: rgba(126, 162, 255, 0.18);
+  --vscode-list-activeSelectionForeground: #f3f7ff;
+  --vscode-widget-shadow: rgba(0, 0, 0, 0.45);
+  --vscode-scrollbar-shadow: rgba(0, 0, 0, 0.4);
+  --vscode-scrollbarSlider-background: rgba(255, 255, 255, 0.14);
+  --vscode-scrollbarSlider-hoverBackground: rgba(255, 255, 255, 0.22);
+  --vscode-scrollbarSlider-activeBackground: rgba(255, 255, 255, 0.3);
+}
+
+/* ------------------------------------------------------------------ 基础 */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 135, 155, 0.35);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(110, 125, 148, 0.55);
+  background-clip: content-box;
+}
+
+.mono {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+  padding: 0 7px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  background: var(--surface-soft);
+  color: var(--text-soft);
+  border: 1px solid var(--border);
+}
+
+.chip.ok {
+  background: var(--ok-soft);
+  color: var(--ok);
+  border-color: var(--ok-border);
+}
+
+.chip.warn {
+  background: var(--warn-soft);
+  color: var(--warn);
+  border-color: var(--warn-border);
+}
+
+.chip.danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border-color: var(--danger-border);
+}
+
+.code-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 19px;
+  padding: 0 6px;
+  border-radius: 5px;
+  background: var(--code-bg);
+  color: var(--code-text);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.empty-state {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--muted);
+  text-align: center;
+  padding: 24px;
+}
+
+.empty-state strong {
+  color: var(--text-soft);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.empty-state .sub {
+  font-size: 12px;
+  line-height: 1.6;
+  max-width: 340px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-aurora {
+    animation: none;
+  }
+}
+
+/* Naive 的 mask 先于抽屉挂载；backdrop-filter 会各自建 stacking context。
+   显式分层，保证抽屉内容在遮罩之上（否则整页只剩一层模糊）。 */
+.n-drawer-mask {
+  z-index: 0 !important;
+}
+
+.n-drawer {
+  z-index: 1 !important;
+}

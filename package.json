@@ -1,0 +1,26 @@
+{
+  "name": "qsdb-studio-workspace",
+  "private": true,
+  "version": "0.1.0",
+  "description": "QSDB Studio 工作区脚本（Tauri CLI 在根目录调用 ui/ 的 Vite）",
+  "author": "qinwh <1510365643@qq.com>",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/qinwenhui/qsdb-studio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qinwenhui/qsdb-studio.git"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "npm --prefix ui run dev",
+    "build": "npm --prefix ui run build",
+    "lint": "npm --prefix ui run lint",
+    "test": "npm --prefix ui run test",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.12.3"
+  }
+}

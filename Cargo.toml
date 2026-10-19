@@ -1,0 +1,28 @@
+[workspace]
+resolver = "2"
+members = ["crates/qsdb-studio-core", "src-tauri"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+authors = ["qinwh <1510365643@qq.com>"]
+# Source-available, noncommercial. See LICENSE (SPDX custom ref; not OSI open source).
+license = "LicenseRef-PolyForm-Noncommercial-1.0.0"
+homepage = "https://github.com/qinwenhui/qsdb-studio"
+repository = "https://github.com/qinwenhui/qsdb-studio"
+
+[workspace.dependencies]
+qsdb-client = "0.1.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# 本地凭据：密码/Token 只进 OS 凭据管理器，不进 JSON 档案（设计 §二、§六.3）。
+# v1 feature = 平台原生存储（Windows Credential Manager / Keychain / Secret Service）。
+keyring = { version = "4", default-features = false, features = ["v1"] }
+# 流式导出 CSV（行数无上限，边读 spool 边写）；M2 的 CSV 导入复用同一实现。
+csv = "1"
+
+[profile.release]
+opt-level = 2
+lto = "thin"
+strip = "symbols"
